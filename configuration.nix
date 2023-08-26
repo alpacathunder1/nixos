@@ -77,6 +77,11 @@ in
     pulse.enable = true;
   };
 
+  programs.bash.shellAliases = {
+    # Read/Only nvim alias
+    view = "nvim -R \"$@\"";
+    nrs = "sudo nixos-rebuild switch";
+  };
 
   users.users.alex = {
     isNormalUser = true;
@@ -129,7 +134,6 @@ in
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
-    ## TODO: Add system wide `view` alias
   };
 
   # Some programs need SUID wrappers, can be configured further or are
