@@ -13,8 +13,23 @@ in
       ./hardware-configuration.nix
     ];
 
+  hardware.opengl = {
+    enable = true;
+    extraPackages = with pkgs; [
+      ## This is for hardware accelerated video decoding:
+      intel-media-driver # LIBVA_DRIVER_NAME=iHD
+      vaapiIntel         # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+      vaapiVdpau
+      libvdpau-va-gl
+    ];
+  };
+
   nixpkgs.config = {
      packageOverrides = pkgs: {
+       ## This is for hardware accelerated video decoding:
+       ## https://nixos.wiki/wiki/Accelerated_Video_Playback
+       vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
+       ## This is for the unstable repo, more comments later
        unstable = import unstableTarball {
          config = config.nixpkgs.config;
        };
