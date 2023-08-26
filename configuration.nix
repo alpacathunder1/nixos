@@ -102,10 +102,13 @@ in
       neofetch
       signal-desktop
       onlyoffice-bin
-      ### gnome-specific stuff
+      ## gnome-specific stuff
       #gnomeExtensions.appindicator
       #pkgs.gnome3.gnome-tweaks
-      #celluloid
+      ## kde-specific stuff
+      yakuake
+      mpv
+      plasma-browser-integration
       ## unstable
       unstable.obsidian
     ];
@@ -122,8 +125,8 @@ in
   fonts.fonts = with pkgs; [
     ## MS fonts for OnlyOffice
     corefonts
-    ## Not sure if I want this font, keeping it here just incase
-    #terminus_font
+    ## Good Terminal font
+    terminus_font
   ];
 
 
