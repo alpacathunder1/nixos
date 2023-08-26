@@ -128,6 +128,11 @@ in
       #plasma-browser-integration
       ## unstable
       unstable.obsidian
+      ## ansible
+      ansible
+      ansible-lint
+      # for credentials
+      bitwarden-cli
     ];
   };
 
