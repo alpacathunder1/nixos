@@ -1,5 +1,5 @@
 { config, pkgs, ... }:
-# I needed to pull Obsidian from stable, so I found this:
+# I needed to pull Obsidian from unstable, so I found this:
 # This is from:
 # https://web.archive.org/web/20230217171255/https://microeducate.tech/how-to-add-nixos-unstable-channel-declaratively-in-configuration-nix/
 let
