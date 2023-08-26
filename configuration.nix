@@ -155,6 +155,7 @@ in
      htop
      git
      neofetch
+     screen
   ];
 
   programs.neovim = {
