@@ -174,11 +174,8 @@ in
 
   # Enable the OpenSSH daemon.
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  services.openssh.enable = false;
+  networking.firewall.allowedTCPPorts = [ 22 ];
+  services.openssh.enable = true;
   networking.firewall.enable = true;
 
   # This value determines the NixOS release from which the default
