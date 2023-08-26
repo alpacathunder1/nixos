@@ -1,3 +1,9 @@
+## TODO
+##
+## [ ] Fix Bash Scripts (/bin/bash?)
+## [ ] Docker
+## [ ] Syntax Cleanup/Standardize
+##
 { config, pkgs, ... }:
 # I needed to pull Obsidian from unstable, so I found this:
 # This is from:
