@@ -29,7 +29,7 @@ in
        ## This is for hardware accelerated video decoding:
        ## https://nixos.wiki/wiki/Accelerated_Video_Playback
        vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
-       ## This is for the unstable repo, more comments later
+       ## This is for the unstable repo
        unstable = import unstableTarball {
          config = config.nixpkgs.config;
        };
@@ -114,7 +114,6 @@ in
       nextcloud-client
       discord
       moonlight-qt
-      neofetch
       signal-desktop
       onlyoffice-bin
       ## gnome-specific stuff
@@ -132,7 +131,6 @@ in
 
   environment.variables = {
       ## Geary for whatever reason didn't default to Adwaita dark unless this was here.
-      ## 
       ## Since I'm Currently testing out KDE, I'm going to comment this out unless I need it later.
       ## GTK_THEME = "Adwaita:dark";
   };
@@ -154,6 +152,7 @@ in
      neovim
      htop
      git
+     neofetch
   ];
 
   programs.neovim = {
