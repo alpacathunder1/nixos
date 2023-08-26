@@ -107,7 +107,8 @@ in
 
   environment.variables = {
       ## Geary for whatever reason didn't default to Adwaita dark unless this was here:
-      GTK_THEME = "Adwaita:dark";
+      ## However,  you switched back to "Adwaita" because your colored calendars were hard to see
+      GTK_THEME = "Adwaita";
   };
 
 
