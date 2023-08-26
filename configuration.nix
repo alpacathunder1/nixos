@@ -1,8 +1,7 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
+# I needed to pull Obsidian from stable, so I found this:
+# This is from:
+# https://web.archive.org/web/20230217171255/https://microeducate.tech/how-to-add-nixos-unstable-channel-declaratively-in-configuration-nix/
 let
   unstableTarball =
     fetchTarball
@@ -29,10 +28,6 @@ in
 
   networking.hostName = "Desktop"; # Define your hostname.
   networking.wireless.enable = false;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -80,46 +75,41 @@ in
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.alex = {
     isNormalUser = true;
     description = "Alex";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
+      ## GUI
       firefox
       nextcloud-client
       discord
       moonlight-qt
       neofetch
       signal-desktop
-      ### gnome
+      ### gnome-specific stuff
       gnomeExtensions.appindicator
       pkgs.gnome3.gnome-tweaks
       celluloid
       onlyoffice-bin
-      ## from unstable
+      ## unstable
       unstable.obsidian
     ];
   };
 
   environment.variables = {
+      ## Geary for whatever reason didn't default to Adwaita dark unless this was here:
       GTK_THEME = "Adwaita:dark";
   };
 
 
   fonts.fonts = with pkgs; [
+    ## MS fonts for OnlyOffice
     corefonts
+    ## Not sure if I want this font, keeping it here just incase
     #terminus_font
   ];
 
@@ -127,8 +117,6 @@ in
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
      ranger
      neovim
@@ -141,6 +129,7 @@ in
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
+    ## TODO: Add system wide `view` alias
   };
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -170,6 +159,7 @@ in
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.05"; # Did you read the comment?
 
+  # Going to try and stay away from flatpaks for now, but this is here just incase I want to flip it
   services.flatpak.enable = false;
 
 }
