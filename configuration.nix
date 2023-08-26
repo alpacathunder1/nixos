@@ -90,6 +90,7 @@ in
     packages = with pkgs; [
       ## GUI
       firefox
+      thunderbird
       nextcloud-client
       discord
       moonlight-qt
