@@ -53,9 +53,14 @@ in
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  # GNOME
+  services.xserver.displayManager.gdm.enable = false;
+  services.xserver.desktopManager.gnome.enable = false;
+
+  # KDE
+  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver.displayManager.defaultSession = "plasmawayland";
 
   # Configure keymap in X11
   services.xserver = {
@@ -96,19 +101,21 @@ in
       moonlight-qt
       neofetch
       signal-desktop
-      ### gnome-specific stuff
-      gnomeExtensions.appindicator
-      pkgs.gnome3.gnome-tweaks
-      celluloid
       onlyoffice-bin
+      ### gnome-specific stuff
+      #gnomeExtensions.appindicator
+      #pkgs.gnome3.gnome-tweaks
+      #celluloid
       ## unstable
       unstable.obsidian
     ];
   };
 
   environment.variables = {
-      ## Geary for whatever reason didn't default to Adwaita dark unless this was here:
-      GTK_THEME = "Adwaita:dark";
+      ## Geary for whatever reason didn't default to Adwaita dark unless this was here.
+      ## 
+      ## Since I'm Currently testing out KDE, I'm going to comment this out unless I need it later.
+      ## GTK_THEME = "Adwaita:dark";
   };
 
 
