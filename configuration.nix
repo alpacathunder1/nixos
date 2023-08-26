@@ -123,7 +123,8 @@ in
       ## kde-specific stuff
       yakuake
       mpv
-      plasma-browser-integration
+      ## This doesn't seem to work, I just installed the Firefox addon manually
+      #plasma-browser-integration
       ## unstable
       unstable.obsidian
     ];
