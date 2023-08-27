@@ -1,6 +1,5 @@
 ## TODO
 ##
-## [ ] Fix Bash Scripts (/bin/bash?)
 ## [ ] Docker
 ## [ ] Syntax Cleanup/Standardize
 ##
