@@ -1,8 +1,5 @@
 ## TODO
-##
-## [ ] Docker
 ## [ ] Syntax Cleanup/Standardize
-##
 { config, pkgs, ... }:
 # I needed to pull Obsidian from unstable, so I found this:
 # This is from:
@@ -111,7 +108,7 @@ in
   users.users.alex = {
     isNormalUser = true;
     description = "Alex";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker"];
     packages = with pkgs; [
       ## GUI
       firefox
@@ -201,5 +198,8 @@ in
 
   # Going to try and stay away from flatpaks for now, but this is here just incase I want to flip it
   services.flatpak.enable = false;
+
+  ## Docker
+  virtualisation.docker.enable = true;
 
 }
