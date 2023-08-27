@@ -1,5 +1,6 @@
 ## TODO
 ## [ ] Syntax Cleanup/Standardize
+## [ ] Add clipboard support for neovim
 { config, pkgs, ... }:
 # I needed to pull Obsidian from unstable, so I found this:
 # This is from:
