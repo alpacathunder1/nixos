@@ -151,6 +151,7 @@ in
     ## Good Terminal font
     terminus_font
     ## For better Japanese support
+    ## https://functor.tokyo/blog/2018-10-01-japanese-on-nixos
     ipafont
     ## MS fonts for OnlyOffice
     corefonts
