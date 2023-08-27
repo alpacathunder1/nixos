@@ -132,7 +132,8 @@ in
       unstable.obsidian
       ## ansible
       ansible
-      ansible-lint
+      ## broken - some pip error
+      #ansible-lint
       # for credentials
       bitwarden-cli
     ];
