@@ -130,8 +130,8 @@ in
       ## gnome-specific stuff
       #gnomeExtensions.appindicator
       #pkgs.gnome3.gnome-tweaks
-      ## This is a good rdp client, so im gonna use it even on KDE
-      gnome-connections
+      ## This is a good rdp client, but it doesn't get used super often.  Might be better to keep it in a nix-shell
+      #gnome-connections
       ## kde-specific stuff
       yakuake
       mpv
