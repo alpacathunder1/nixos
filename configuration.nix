@@ -146,12 +146,30 @@ in
 
 
   fonts.fonts = with pkgs; [
-    ## MS fonts for OnlyOffice
-    corefonts
+    ## Default
+    dejavu_fonts
     ## Good Terminal font
     terminus_font
+    ## For better Japanese support
+    ipafont
+    ## MS fonts for OnlyOffice
+    corefonts
   ];
 
+  fonts.fontconfig.defaultFonts = {
+   monospace = [
+     "DejaVu Sans Mono"
+     "IPAGothic"
+   ];
+   sansSerif = [
+     "DejaVu Sans"
+     "IPAPGothic"
+   ];
+   serif = [
+     "DejaVu Serif"
+     "IPAPMincho"
+   ];
+ };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
