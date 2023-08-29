@@ -128,6 +128,10 @@ in
       moonlight-qt
       signal-desktop
       onlyoffice-bin
+      ## umbc
+      webex
+      openconnect
+      networkmanager-openconnect
       ## gnome-specific stuff
       #gnomeExtensions.appindicator
       #pkgs.gnome3.gnome-tweaks
@@ -193,6 +197,7 @@ in
      git
      neofetch
      screen
+     ripgrep
   ];
 
   programs.neovim = {
