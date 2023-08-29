@@ -113,6 +113,9 @@ in
     # Read/Only nvim alias
     view = "nvim -R \"$@\"";
     nrs = "sudo nixos-rebuild switch";
+    # git
+    gca = "git commit -av";
+    gp = "git pull -v;git push -v";
   };
 
   users.users.alex = {
