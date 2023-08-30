@@ -201,6 +201,7 @@ in
      neofetch
      screen
      ripgrep
+     zip
   ];
 
   programs.neovim = {
