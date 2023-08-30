@@ -202,6 +202,7 @@ in
      screen
      ripgrep
      zip
+     unzip
   ];
 
   programs.neovim = {
