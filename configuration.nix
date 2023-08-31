@@ -203,6 +203,7 @@ in
      ripgrep
      zip
      unzip
+     nfs-utils
   ];
 
   programs.neovim = {
@@ -241,5 +242,25 @@ in
 
   ## Docker
   virtualisation.docker.enable = true;
+
+  services.rpcbind.enable = true; # needed for NFS
+  systemd.mounts = [{
+    type = "nfs";
+    mountConfig = {
+      Options = "rw,noatime,_netdev";
+    };
+    what = "rokkenjima:/opt/alex";
+    where = "/home/alex";
+  }
+  ];
+  systemd.automounts = [{
+    wantedBy = [ "multi-user.target" ];
+    automountConfig = {
+      TimeoutIdleSec = "0";
+    };
+    where = "/home/alex";
+  }
+  ];
+
 
 }
