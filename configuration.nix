@@ -132,6 +132,7 @@ in
       moonlight-qt
       signal-desktop
       onlyoffice-bin
+      anki-bin
       ## umbc
       webex
       openconnect
