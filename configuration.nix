@@ -113,7 +113,7 @@ in
     # Read/Only nvim alias
     view = "nvim -R \"$@\"";
     nrs = "sudo nixos-rebuild switch";
-    ncu = "sudo nix-channel update";
+    ncu = "sudo nix-channel --update";
     # git
     gca = "git commit -av";
     gp = "git pull -v;git push -v";
