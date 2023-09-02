@@ -1,6 +1,9 @@
 ## TODO
-## [ ] Syntax Cleanup/Standardize
+##
+## [ ] Setup Japanese Language IME
 ## [ ] Add clipboard support for neovim
+## [ ] Syntax Cleanup/Standardize
+##
 { config, pkgs, ... }:
 # I needed to pull Obsidian from unstable, so I found this:
 # This is from:
