@@ -114,6 +114,7 @@ in
     view = "nvim -R \"$@\"";
     nrs = "sudo nixos-rebuild switch";
     ncu = "sudo nix-channel --update";
+    nsp = "sudo nix-shell -p";
     # git
     gca = "git commit -av";
     gp = "git pull -v;git push -v";
