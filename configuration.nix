@@ -98,6 +98,10 @@ in
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  ## Needed for your printer
+  ## https://nixos.wiki/wiki/Printing
+  services.printing.drivers = [ pkgs.brlaser ];
+
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
