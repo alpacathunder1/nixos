@@ -95,9 +95,6 @@ in
   # Exclude xterm
   services.xserver.excludePackages = [ pkgs.xterm ];
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
@@ -265,5 +262,13 @@ in
   }
   ];
 
+  # Enable CUPS to print documents.
+  services.printing.enable = true;
+  ## Detecting printers
+  ## https://nixos.wiki/wiki/Printing
+  services.avahi.enable = true;
+  services.avahi.nssmdns = true;
+  # for a WiFi printer
+  services.avahi.openFirewall = true;
 
 }
