@@ -130,7 +130,7 @@ in
   users.users.alex = {
     isNormalUser = true;
     description = "Alex";
-    extraGroups = [ "networkmanager" "wheel" "docker"];
+    extraGroups = [ "networkmanager" "wheel" "docker" "scanner" "lp"];
     packages = with pkgs; [
       ## GUI
       firefox
@@ -164,7 +164,9 @@ in
       #ansible-lint
       # for credentials
       bitwarden-cli
+      ## photo/picture tools
       gimp
+      simple-scan
     ];
   };
 
@@ -248,6 +250,10 @@ in
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.05"; # Did you read the comment?
+
+  # Scanner support
+  # https://nixos.wiki/wiki/Scanners
+  hardware.sane.enable = true;
 
   # Going to try and stay away from flatpaks for now, but this is here just incase I want to flip it
   services.flatpak.enable = false;
