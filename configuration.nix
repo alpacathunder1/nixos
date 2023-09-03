@@ -153,6 +153,7 @@ in
       ## kde-specific stuff
       yakuake
       mpv
+      kolourpaint
       ## This doesn't seem to work, I just installed the Firefox addon manually
       #plasma-browser-integration
       ## unstable
@@ -163,6 +164,7 @@ in
       #ansible-lint
       # for credentials
       bitwarden-cli
+      gimp
     ];
   };
 
