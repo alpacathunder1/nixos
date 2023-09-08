@@ -1,6 +1,5 @@
 ## TODO
 ##
-## [ ] Setup Japanese Language IME
 ## [ ] Add clipboard support for neovim
 ## [ ] Syntax Cleanup/Standardize
 ##
@@ -57,6 +56,16 @@
     LC_PAPER = "en_US.UTF-8";
     LC_TELEPHONE = "en_US.UTF-8";
     LC_TIME = "en_US.UTF-8";
+  };
+
+  ## For Japanese IME support
+  ## https://nixos.wiki/wiki/Fcitx5
+  i18n.inputMethod = {
+      enabled = "fcitx5";
+      fcitx5.addons = with pkgs; [
+          fcitx5-mozc
+          fcitx5-with-addons
+      ];
   };
 
   # Enable the X11 windowing system.
