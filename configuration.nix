@@ -5,14 +5,6 @@
 ## [ ] Syntax Cleanup/Standardize
 ##
 { config, pkgs, ... }:
-# I needed to pull Obsidian from unstable, so I found this:
-# This is from:
-# https://web.archive.org/web/20230217171255/https://microeducate.tech/how-to-add-nixos-unstable-channel-declaratively-in-configuration-nix/
-let
-  unstableTarball =
-    fetchTarball
-      https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz;
-in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -35,10 +27,6 @@ in
        ## This is for hardware accelerated video decoding:
        ## https://nixos.wiki/wiki/Accelerated_Video_Playback
        vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
-       ## This is for the unstable repo
-       unstable = import unstableTarball {
-         config = config.nixpkgs.config;
-       };
      };
    };
 
@@ -156,8 +144,7 @@ in
       kolourpaint
       ## This doesn't seem to work, I just installed the Firefox addon manually
       #plasma-browser-integration
-      ## unstable
-      unstable.obsidian
+      obsidian
       ## ansible
       ansible
       ## broken - some pip error
@@ -177,7 +164,7 @@ in
   };
 
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     ## Default
     dejavu_fonts
     ## Good Terminal font
@@ -243,13 +230,7 @@ in
   #services.openssh.enable = true;
   networking.firewall.enable = true;
 
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.05"; # Did you read the comment?
+  system.stateVersion = "unstable"; 
 
   # Scanner support
   # https://nixos.wiki/wiki/Scanners
