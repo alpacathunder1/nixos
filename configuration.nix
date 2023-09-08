@@ -210,6 +210,7 @@
      git
      neofetch
      screen
+     tmux
      ripgrep
      zip
      unzip
