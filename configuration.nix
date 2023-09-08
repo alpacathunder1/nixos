@@ -124,6 +124,8 @@
     gp = "git pull -v;git push -v";
   };
 
+  programs.bash.interactiveShellInit = "set -o vi";
+
   users.users.alex = {
     isNormalUser = true;
     description = "Alex";
