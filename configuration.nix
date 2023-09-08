@@ -116,9 +116,10 @@
   programs.bash.shellAliases = {
     # Read/Only nvim alias
     view = "nvim -R \"$@\"";
-    nrs = "sudo nixos-rebuild switch";
     ncu = "sudo nix-channel --update";
+    nrs = "sudo nixos-rebuild switch";
     nsp = "sudo nix-shell -p";
+    nixUp = "ncu;nrs";
     # git
     gca = "git commit -av";
     gp = "git pull -v;git push -v";
@@ -141,6 +142,7 @@
       onlyoffice-bin
       anki-bin
       ## umbc
+      google-chrome
       webex
       openconnect
       networkmanager-openconnect
