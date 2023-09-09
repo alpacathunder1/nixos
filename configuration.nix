@@ -140,7 +140,6 @@
       moonlight-qt
       signal-desktop
       onlyoffice-bin
-      anki-bin
       ## umbc
       google-chrome
       webex
