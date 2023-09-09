@@ -119,7 +119,7 @@
     ncu = "sudo nix-channel --update";
     nrs = "sudo nixos-rebuild switch";
     nsp = "sudo nix-shell -p";
-    nixUp = "ncu;nrs";
+    nixUp = "ncu && nrs";
     # git
     gca = "git commit -av";
     gp = "git pull -v;git push -v";
