@@ -159,8 +159,7 @@
       obsidian
       ## ansible
       ansible
-      ## broken - some pip error
-      #ansible-lint
+      ansible-lint
       # for credentials
       bitwarden-cli
       ## photo/picture tools
