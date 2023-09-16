@@ -224,7 +224,17 @@
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
+    configure = {
+      customRC = ''
+        set number
+        set mouse=
+        set clipboard+=unnamedplus
+      '';
+      packages.myVimPackage = with pkgs.vimPlugins; {
+        start = [ vim-gitgutter ];
+    };
   };
+};
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
