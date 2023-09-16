@@ -226,12 +226,22 @@
     vimAlias = true;
     configure = {
       customRC = ''
-        set number
-        set mouse=
+        set nu
+        set nospell
+        set smartcase
+        set mouse=a
+        set noshowmode
+	"this doesnt seem to work right now
         set clipboard+=unnamedplus
+	let g:indent_guides_enable_on_vim_startup = 1
+	let g:lightline = { 'colorscheme': 'wombat', }
       '';
       packages.myVimPackage = with pkgs.vimPlugins; {
-        start = [ vim-gitgutter ];
+        start = [ 
+	vim-gitgutter
+	vim-smoothie
+	lightline-vim
+	];
     };
   };
 };
