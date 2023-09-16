@@ -1,8 +1,3 @@
-## TODO
-##
-## [ ] Add clipboard support for neovim
-## [ ] Syntax Cleanup/Standardize
-##
 { config, pkgs, ... }:
 {
   imports =
@@ -154,6 +149,8 @@
       yakuake
       mpv
       kolourpaint
+      ## fixes clipboard for neovim
+      wl-clipboard
       ## This doesn't seem to work, I just installed the Firefox addon manually
       #plasma-browser-integration
       obsidian
@@ -231,7 +228,7 @@
         set smartcase
         set mouse=a
         set noshowmode
-	"this doesnt seem to work right now
+	"this needs the `wl-clipboard` package on wayland
         set clipboard+=unnamedplus
 	let g:indent_guides_enable_on_vim_startup = 1
 	let g:lightline = { 'colorscheme': 'wombat', }
