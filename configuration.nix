@@ -1,36 +1,34 @@
-{ config, pkgs, ... }:
-{
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+{ config, pkgs, ... }: {
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   hardware.opengl = {
     enable = true;
     extraPackages = with pkgs; [
       ## This is for hardware accelerated video decoding:
       intel-media-driver # LIBVA_DRIVER_NAME=iHD
-      vaapiIntel         # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+      vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
       vaapiVdpau
       libvdpau-va-gl
     ];
   };
 
   nixpkgs.config = {
-     packageOverrides = pkgs: {
-       ## This is for hardware accelerated video decoding:
-       ## https://nixos.wiki/wiki/Accelerated_Video_Playback
-       vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
-     };
-   };
-
+    packageOverrides = pkgs: {
+      ## This is for hardware accelerated video decoding:
+      ## https://nixos.wiki/wiki/Accelerated_Video_Playback
+      vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
+    };
+  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "Desktop"; # Define your hostname.
-  networking.wireless.enable = false;  # Enables wireless support via wpa_supplicant.
+  networking.wireless.enable =
+    false; # Enables wireless support via wpa_supplicant.
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -56,11 +54,8 @@
   ## For Japanese IME support
   ## https://nixos.wiki/wiki/Fcitx5
   i18n.inputMethod = {
-      enabled = "fcitx5";
-      fcitx5.addons = with pkgs; [
-          fcitx5-mozc
-          fcitx5-with-addons
-      ];
+    enabled = "fcitx5";
+    fcitx5.addons = with pkgs; [ fcitx5-mozc fcitx5-with-addons ];
   };
 
   # Enable the X11 windowing system.
@@ -77,9 +72,7 @@
 
   # Excludes Elisa, a music player that I don't use
   # https://nixos.wiki/wiki/KDE
-  environment.plasma5.excludePackages = with pkgs.libsForQt5; [
-    elisa
-  ];
+  environment.plasma5.excludePackages = with pkgs.libsForQt5; [ elisa ];
 
   # Configure keymap in X11
   services.xserver = {
@@ -110,10 +103,10 @@
 
   programs.bash.shellAliases = {
     # Read/Only nvim alias
-    view = "nvim -R \"$@\"";
+    view = ''nvim -R "$@"'';
     ncu = "sudo nix-channel --update";
     nrs = "sudo nixos-rebuild switch";
-    nsp = "nix-shell -p \"$@\"";
+    nsp = ''nix-shell -p "$@"'';
     nixUp = "ncu && nrs";
     # git
     gca = "git commit -av";
@@ -125,7 +118,7 @@
   users.users.alex = {
     isNormalUser = true;
     description = "Alex";
-    extraGroups = [ "networkmanager" "wheel" "docker" "scanner" "lp"];
+    extraGroups = [ "networkmanager" "wheel" "docker" "scanner" "lp" ];
     packages = with pkgs; [
       ## GUI
       firefox
@@ -135,7 +128,7 @@
       moonlight-qt
       signal-desktop
       onlyoffice-bin
-      xournalpp ## for pdf editing
+      xournalpp # # for pdf editing
       ## umbc
       google-chrome
       webex
@@ -167,11 +160,10 @@
   };
 
   environment.variables = {
-      ## Geary for whatever reason didn't default to Adwaita dark unless this was here.
-      ## Since I'm Currently testing out KDE, I'm going to comment this out unless I need it later.
-      ## GTK_THEME = "Adwaita:dark";
+    ## Geary for whatever reason didn't default to Adwaita dark unless this was here.
+    ## Since I'm Currently testing out KDE, I'm going to comment this out unless I need it later.
+    ## GTK_THEME = "Adwaita:dark";
   };
-
 
   fonts.packages = with pkgs; [
     ## Default
@@ -186,36 +178,27 @@
   ];
 
   fonts.fontconfig.defaultFonts = {
-   monospace = [
-     "DejaVu Sans Mono"
-     "IPAGothic"
-   ];
-   sansSerif = [
-     "DejaVu Sans"
-     "IPAPGothic"
-   ];
-   serif = [
-     "DejaVu Serif"
-     "IPAPMincho"
-   ];
- };
+    monospace = [ "DejaVu Sans Mono" "IPAGothic" ];
+    sansSerif = [ "DejaVu Sans" "IPAPGothic" ];
+    serif = [ "DejaVu Serif" "IPAPMincho" ];
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-     ranger
-     neovim
-     htop
-     git
-     neofetch
-     screen
-     tmux
-     ripgrep
-     zip
-     unzip
-     nfs-utils
-     nixfmt
+    ranger
+    neovim
+    htop
+    git
+    neofetch
+    screen
+    tmux
+    ripgrep
+    zip
+    unzip
+    nfs-utils
+    nixfmt
   ];
 
   programs.neovim = {
@@ -225,25 +208,21 @@
     vimAlias = true;
     configure = {
       customRC = ''
-        set nu
-        set nospell
-        set smartcase
-        set mouse=a
-        set noshowmode
-	"this needs the `wl-clipboard` package on wayland
-        set clipboard+=unnamedplus
-	let g:indent_guides_enable_on_vim_startup = 1
-	let g:lightline = { 'colorscheme': 'wombat', }
+                set nu
+                set nospell
+                set smartcase
+                set mouse=a
+                set noshowmode
+        	"this needs the `wl-clipboard` package on wayland
+                set clipboard+=unnamedplus
+        	let g:indent_guides_enable_on_vim_startup = 1
+        	let g:lightline = { 'colorscheme': 'wombat', }
       '';
       packages.myVimPackage = with pkgs.vimPlugins; {
-        start = [ 
-	vim-gitgutter
-	vim-smoothie
-	lightline-vim
-	];
+        start = [ vim-gitgutter vim-smoothie lightline-vim ];
+      };
     };
   };
-};
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -261,7 +240,7 @@
   #services.openssh.enable = true;
   networking.firewall.enable = true;
 
-  system.stateVersion = "unstable"; 
+  system.stateVersion = "unstable";
 
   # Scanner support
   # https://nixos.wiki/wiki/Scanners
@@ -276,21 +255,14 @@
   services.rpcbind.enable = true; # needed for NFS
   systemd.mounts = [{
     type = "nfs";
-    mountConfig = {
-      Options = "rw,noatime,_netdev";
-    };
+    mountConfig = { Options = "rw,noatime,_netdev"; };
     what = "rokkenjima:/opt/alex";
     where = "/home/alex";
-  }
-  ];
+  }];
   systemd.automounts = [{
     wantedBy = [ "multi-user.target" ];
-    automountConfig = {
-      TimeoutIdleSec = "0";
-    };
+    automountConfig = { TimeoutIdleSec = "0"; };
     where = "/home/alex";
-  }
-  ];
-
+  }];
 
 }
