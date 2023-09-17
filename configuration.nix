@@ -135,6 +135,7 @@
       moonlight-qt
       signal-desktop
       onlyoffice-bin
+      xournalpp ## for pdf editing
       ## umbc
       google-chrome
       webex
