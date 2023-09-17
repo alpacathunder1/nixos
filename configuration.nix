@@ -215,6 +215,7 @@
      zip
      unzip
      nfs-utils
+     nixfmt
   ];
 
   programs.neovim = {
