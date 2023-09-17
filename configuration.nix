@@ -215,7 +215,6 @@
      zip
      unzip
      nfs-utils
-     nixpkgs-fmt
   ];
 
   programs.neovim = {
