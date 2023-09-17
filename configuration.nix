@@ -253,16 +253,32 @@
   virtualisation.docker.enable = true;
 
   services.rpcbind.enable = true; # needed for NFS
-  systemd.mounts = [{
-    type = "nfs";
-    mountConfig = { Options = "rw,noatime,_netdev"; };
-    what = "rokkenjima:/opt/alex";
-    where = "/home/alex";
-  }];
-  systemd.automounts = [{
-    wantedBy = [ "multi-user.target" ];
-    automountConfig = { TimeoutIdleSec = "0"; };
-    where = "/home/alex";
-  }];
-
+  systemd.mounts = [
+    {
+      description = "My home directory mount";
+      type = "nfs";
+      mountConfig = { Options = "rw,noatime,_netdev"; };
+      what = "rokkenjima:/opt/alex";
+      where = "/home/alex";
+    }
+    {
+      description = "Storage server read-only mount";
+      type = "nfs";
+      mountConfig = { Options = "ro,noatime,_netdev"; };
+      what = "rokkenjima:/media/mammon";
+      where = "/media/mammon";
+    }
+  ];
+  systemd.automounts = [
+    {
+      wantedBy = [ "multi-user.target" ];
+      automountConfig = { TimeoutIdleSec = "0"; };
+      where = "/home/alex";
+    }
+    {
+      wantedBy = [ "multi-user.target" ];
+      automountConfig = { TimeoutIdleSec = "600"; };
+      where = "/media/mammon";
+    }
+  ];
 }
