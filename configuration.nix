@@ -129,6 +129,7 @@
       signal-desktop
       onlyoffice-bin
       xournalpp # # for pdf editing
+      caffeine-ng
       ## umbc
       google-chrome
       webex
