@@ -137,7 +137,8 @@
       xournalpp # # for pdf editing
       caffeine-ng
       ## umbc
-      google-chrome
+      # dont really use this at home as much
+      #google-chrome
       webex
       openconnect
       networkmanager-openconnect
