@@ -141,6 +141,7 @@
       webex
       openconnect
       networkmanager-openconnect
+      anki-bin
       ## gnome-specific stuff
       #gnomeExtensions.appindicator
       #pkgs.gnome3.gnome-tweaks
