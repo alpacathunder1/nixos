@@ -208,6 +208,7 @@
     unzip
     nfs-utils
     nixfmt
+    psmisc
   ];
 
   programs.neovim = {
