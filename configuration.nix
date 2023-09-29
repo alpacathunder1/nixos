@@ -1,12 +1,6 @@
 { config, pkgs, ... }: {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ## nfs bug as of (around) 09/19
-    ## https://github.com/NixOS/nixpkgs/issues/255803
-    ##
-    ## You had to edit someones patch, but it appears to fix the issue
-    ## https://github.com/nevivurn/nixos-config/pull/1/commits/441ff5a39a8e0154951600e7ed8c5e26922df00b
-    ./fix-nfs4-kernel.nix
   ];
 
   hardware.opengl = {
