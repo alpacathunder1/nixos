@@ -160,6 +160,8 @@
       ## photo/picture tools
       gimp
       simple-scan
+      ## ide
+      vscodium
     ];
   };
 
