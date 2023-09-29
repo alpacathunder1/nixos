@@ -111,6 +111,8 @@
     # git
     gca = "git commit -av";
     gp = "git pull -v;git push -v";
+    # mv
+    mv = "mv -iv";
   };
 
   programs.bash.interactiveShellInit = "set -o vi";
