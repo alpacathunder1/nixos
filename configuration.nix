@@ -200,6 +200,7 @@
     ripgrep
     zip
     unzip
+    unrar-wrapper
     nfs-utils
     nixfmt
     psmisc
