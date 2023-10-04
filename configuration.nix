@@ -151,7 +151,8 @@
       kcalc
       ## fixes clipboard for neovim
       wl-clipboard
-      plasma-browser-integration
+      ## This doesn't seem to work, I just installed the Firefox addon manually
+      #plasma-browser-integration
       obsidian
       ## ansible
       ansible
