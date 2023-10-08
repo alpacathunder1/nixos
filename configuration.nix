@@ -164,6 +164,8 @@
       simple-scan
       ## ide
       vscodium
+      ## music
+      spotify
     ];
   };
 
