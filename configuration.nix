@@ -123,7 +123,7 @@
     extraGroups = [ "networkmanager" "wheel" "docker" "scanner" "lp" ];
     packages = with pkgs; [
       ## GUI
-      firefox
+      google-chrome
       thunderbird
       nextcloud-client
       discord
@@ -133,8 +133,6 @@
       xournalpp # # for pdf editing
       caffeine-ng
       ## umbc
-      # dont really use this at home as much
-      #google-chrome
       webex
       openconnect
       networkmanager-openconnect
