@@ -148,7 +148,6 @@
       #gnome-connections
       ## kde-specific stuff
       yakuake
-      mpv
       kolourpaint
       kcalc
       ## fixes clipboard for neovim
@@ -168,6 +167,9 @@
       vscodium
       ## music
       spotify
+      ## videos
+      jellyfin-media-player
+      mpv
     ];
   };
 
