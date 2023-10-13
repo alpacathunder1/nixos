@@ -90,6 +90,10 @@
   ## https://nixos.wiki/wiki/Printing
   services.printing.drivers = [ pkgs.brlaser ];
 
+  security.sudo = {
+    enable = true;
+    extraConfig = "Defaults env_reset,pwfeedback";
+  };
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
