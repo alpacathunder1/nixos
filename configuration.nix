@@ -127,7 +127,7 @@
     extraGroups = [ "networkmanager" "wheel" "docker" "scanner" "lp" ];
     packages = with pkgs; [
       ## GUI
-      google-chrome
+      firefox
       thunderbird
       nextcloud-client
       discord
@@ -140,7 +140,6 @@
       webex
       openconnect
       networkmanager-openconnect
-      anki-bin
       ## gnome-specific stuff
       #gnomeExtensions.appindicator
       #pkgs.gnome3.gnome-tweaks
@@ -213,6 +212,7 @@
     nfs-utils
     nixfmt
     psmisc
+    wget
   ];
 
   programs.neovim = {
