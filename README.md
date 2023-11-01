@@ -1,4 +1,8 @@
-# nixos-Desktop
+# **NOTE:**
+
+I'm retiring this setup for now.  nixOS is a blast, I'm just going to use the NUC I've been using this for as another box in my setup.
+
+## nixos-Desktop
 
 My Desktop NixOS config
 
